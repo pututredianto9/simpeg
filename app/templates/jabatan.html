@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static%}
+<h3> Daftar Jabatan </h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id</th>
+        <th scope="col">Jabatan</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for jabatan in jabatan_list %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ jabatan.id }}</td>
+          <td>{{ jabatan.nama_jabatan }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

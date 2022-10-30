@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static%}
+<h3> Daftar Jabatan </h3>
+<a href="{% url 'formPegawai' %}" type="button" class="btn btn-primary">Tambah Pegawai</a>
+<a href="{% url 'exportcsv' %}" type="button" class="btn btn-info">Export CSV</a>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nip</th>
+        <th scope="col">nama</th>
+        <th scope="col">email</th>
+        <th scope="col">Jenis_kelamin</th>
+        <th scope="col">alamat</th>
+        <th scope="col">foto</th>
+        <th scope="col">Divisi</th>
+        <th scope="col">Jabatan</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pegawai in pegawai_list %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ pegawai.nip }}</td>
+          <td>{{ pegawai.nama }}</td>
+          <td>{{ pegawai.email }}</td>
+          <td>{{ pegawai.gender }}</td>
+          <td>{{ pegawai.alamat }}</td>
+          <td>
+            <img src="{% static 'images/' %}{{ pegawai.foto }}" width="50">
+          </td>
+          <td>{{ pegawai.divisi.nama }}</td>
+          <td>{{ pegawai.jabatan.nama_jabatan }}</td>
+          <td><a href="editPegawai/{{pegawai.nip}}" class="btn btn-warning">Edit</a></td>
+          <td><a href="deletePegawai/{{pegawai.nip}}" class="btn btn-danger" onclick="return confirm('apakah anda yakin')">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock %}

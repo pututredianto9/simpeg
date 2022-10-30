@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static%}
+<h3> Daftar Divisi </h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id</th>
+        <th scope="col">Jabatan</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for divisi in divisi_list %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ divisi.id }}</td>
+        <td>{{ divisi.nama }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
